@@ -1,6 +1,7 @@
 import express from 'express'
 import { Request, Response, NextFunction } from 'express';
 import prisma from '../prisma/prismaClient'
+import authRouter from './routes/auth'
 
 import { CustomError } from '../models/interfaces';
 
@@ -15,8 +16,7 @@ app.use((req, res, next) => {
     next();
 })
 
-app.use() // rotas
-
+app.use("/auth", authRouter) 
 
 app.use((error: CustomError, req: Request , res: Response, next: NextFunction) => {
     console.log(error)

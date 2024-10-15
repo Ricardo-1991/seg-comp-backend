@@ -13,7 +13,7 @@ async function getCitiesofBahia() {
   }
 }
 
-async function populateCidades() {
+async function populateCities() {
   try {
     const cidades = await getCitiesofBahia();
     
@@ -33,4 +33,4 @@ async function populateCidades() {
   }
 }
 
-populateCidades();
+populateCities();
