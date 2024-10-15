@@ -16,8 +16,37 @@ const signupSchema = z.object({
     gender: z.string({ message: "Necessário escolher um genero." }),
     cityId: z.number({ message: "Necessário escolher uma cidade." })
 });
-
-
+/**
+ * @swagger
+ * /signup:
+ *   post:
+ *     summary: Cria um novo usuário
+ *     tags: [Usuários]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *               email:
+ *                 type: string
+ *                 format: email
+ *               password:
+ *                 type: string
+ *                 minLength: 8
+ *               gender:
+ *                 type: string
+ *               cityId:
+ *                 type: integer
+ *     responses:
+ *       201:
+ *         description: Usuário criado com sucesso.
+ *       409:
+ *         description: E-mail já em uso.
+ */
 router.post("/signup", userValidator(signupSchema), signupController)
 
 
