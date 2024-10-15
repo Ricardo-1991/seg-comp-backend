@@ -1,4 +1,3 @@
-import express from 'express';
 import { Request, Response, NextFunction } from 'express';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
