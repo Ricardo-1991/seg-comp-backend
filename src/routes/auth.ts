@@ -18,7 +18,7 @@ const signupSchema = z.object({
 });
 /**
  * @swagger
- * /signup:
+ * /auth/signup:
  *   post:
  *     summary: Cria um novo usuário
  *     tags: [Usuários]
