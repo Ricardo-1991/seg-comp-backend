@@ -1,5 +1,6 @@
 import express from 'express'
 import { Request, Response, NextFunction } from 'express';
+import { setupSwagger } from './swagger';
 import prisma from '../prisma/prismaClient'
 import authRouter from './routes/auth'
 
@@ -9,12 +10,14 @@ const app = express()
 
 app.use(express.json())
 
+setupSwagger(app)
+
 app.use((request, response, next) => {
     response.setHeader("Access-Control-Allow-Origin", "*");
-    response.setHeader("Access-Control-Allow-Headers","GET, POST, PUT, PATCH, DELETE");
-    response.setHeader("Access-Control-Allow-Headers","Content-Type, Authorization");
+    response.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, PATCH, DELETE");
+    response.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
     next();
-})
+});
 
 app.use("/auth", authRouter) 
 
@@ -32,5 +35,6 @@ process.on("SIGINT", async () => {
 })
 
 app.listen(3000, () => {
-    console.log('Server is running on port 3000')
+    console.log('Servidor rodando em http://localhost:3000');
+    console.log('Documentação disponível em http://localhost:3000/api-docs');
 })
