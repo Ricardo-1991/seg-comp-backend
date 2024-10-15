@@ -14,7 +14,6 @@ export const userValidator = (schema: ZodSchema<IUserValidator>) => {
 
       return next(error); 
     }
-    
     next();
   };
 };

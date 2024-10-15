@@ -9,21 +9,21 @@ const app = express()
 
 app.use(express.json())
 
-app.use((req, res, next) => {
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader("Access-Control-Allow-Headers","GET, POST, PUT, PATCH, DELETE");
-    res.setHeader("Access-Control-Allow-Headers","Content-Type, Authorization");
+app.use((request, response, next) => {
+    response.setHeader("Access-Control-Allow-Origin", "*");
+    response.setHeader("Access-Control-Allow-Headers","GET, POST, PUT, PATCH, DELETE");
+    response.setHeader("Access-Control-Allow-Headers","Content-Type, Authorization");
     next();
 })
 
 app.use("/auth", authRouter) 
 
-app.use((error: CustomError, req: Request , res: Response, next: NextFunction) => {
+app.use((error: CustomError, request: Request , response: Response, next: NextFunction) => {
     console.log(error)
     const status = error.status || 500
     const message = error.message || "Um erro ocorreu."
     const data = error.data
-    res.status(status).json({message, data})
+    response.status(status).json({message, data})
 })
 
 process.on("SIGINT", async () => {
