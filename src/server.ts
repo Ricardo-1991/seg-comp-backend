@@ -3,6 +3,7 @@ import { Request, Response, NextFunction } from 'express';
 import { setupSwagger } from './swagger';
 import prisma from '../prisma/prismaClient'
 import authRouter from './routes/auth'
+import citiesRouter from './routes/cities'
 
 import { CustomError } from '../models/interfaces';
 
@@ -20,6 +21,7 @@ app.use((request, response, next) => {
 });
 
 app.use("/auth", authRouter) 
+app.use(citiesRouter) 
 
 app.use((error: CustomError, request: Request , response: Response, next: NextFunction) => {
     console.log(error)
