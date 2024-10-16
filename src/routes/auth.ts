@@ -2,6 +2,7 @@ import express from 'express'
 import {z} from "zod"
 import { signupController } from '../controllers/auth'
 import { userValidator } from '../middlewares/authValidator';
+import { isValidCPF } from '../utils/validateCPF';
 
 const router = express.Router()
 
@@ -13,9 +14,15 @@ const signupSchema = z.object({
         .regex(/[A-Z]/, { message: "Senha deve conter pelo menos uma letra maiúscula." })
         .regex(/[0-9]/, { message: "Senha deve conter pelo menos um número." })
         .regex(/[^a-zA-Z0-9]/, { message: "Senha deve conter pelo menos um caractere especial." }),
+    confirmPassword: z.string(),
+    cpf: z.string().refine((value) => isValidCPF(value), { message: "CPF inválido." }),
     gender: z.string({ message: "Necessário escolher um genero." }),
     cityId: z.number({ message: "Necessário escolher uma cidade." })
-});
+}).refine(data => data.password === data.confirmPassword, {
+    message: "Senhas devem ser iguais.",
+    path: ["confirmPassword"]
+})
+
 /**
  * @swagger
  * /auth/signup:
@@ -37,6 +44,11 @@ const signupSchema = z.object({
  *               password:
  *                 type: string
  *                 minLength: 8
+ *               confirmPassword:
+ *                 type: string
+ *               cpf:
+ *                 type: string
+ *                 description: CPF no formato xxx.xxx.xxx-xx
  *               gender:
  *                 type: string
  *               cityId:
@@ -45,8 +57,9 @@ const signupSchema = z.object({
  *       201:
  *         description: Usuário criado com sucesso.
  *       409:
- *         description: E-mail já em uso.
+ *         description: E-mail ou CPF já em uso.
  */
+
 router.post("/signup", userValidator(signupSchema), signupController)
 
 

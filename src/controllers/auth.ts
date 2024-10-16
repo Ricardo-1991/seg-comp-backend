@@ -6,7 +6,14 @@ import { CustomError } from '../interfaces/customError';
 
 export const signupController = async (request: Request, response: Response, next: NextFunction) => {
     try {
-        const { name, email, password, gender, cityId } = request.body;
+        const { name, email, password, confirmPassword, cpf, gender, cityId } = request.body;
+        
+        if(password !== confirmPassword) {
+            const error = new Error("Senhas devem ser iguais.") as CustomError
+            error.status = 400
+            throw error
+        }
+
         const hashedPassword = await bcrypt.hash(password, 10);
 
         const createUser = await prisma.user.create({
@@ -14,6 +21,7 @@ export const signupController = async (request: Request, response: Response, nex
                 name,
                 email,
                 password: hashedPassword,
+                cpf,
                 gender,
                 cityId: Number(cityId)
             },
@@ -28,6 +36,7 @@ export const signupController = async (request: Request, response: Response, nex
                 name: createUser.name,
                 email: createUser.email,
                 gender: createUser.gender,
+                cpf: createUser.cpf,
                 city: createUser.city 
             }
         });
