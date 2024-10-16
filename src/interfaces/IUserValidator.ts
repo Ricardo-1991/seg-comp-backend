@@ -6,4 +6,5 @@ export interface IUserValidator {
     cpf: string;
     gender: string;
     cityId: number;
+    privacyPolicyAccepted: boolean
 }

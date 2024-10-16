@@ -14,14 +14,15 @@ datasource db {
 }
 
 model User {
-  id       Int    @id @default(autoincrement())
-  name     String
-  gender   String
-  cpf      String @unique
-  email    String @unique
-  password String
-  cityId   Int
-  city     City   @relation(fields: [cityId], references: [id])
+  id                    Int     @id @default(autoincrement())
+  name                  String
+  gender                String
+  cpf                   String  @unique
+  email                 String  @unique
+  password              String
+  cityId                Int
+  city                  City    @relation(fields: [cityId], references: [id])
+  privacyPolicyAccepted Boolean @default(false)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
