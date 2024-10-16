@@ -17,7 +17,8 @@ const signupSchema = z.object({
     confirmPassword: z.string(),
     cpf: z.string().refine((value) => isValidCPF(value), { message: "CPF inválido." }),
     gender: z.string({ message: "Necessário escolher um genero." }),
-    cityId: z.number({ message: "Necessário escolher uma cidade." })
+    cityId: z.number({ message: "Necessário escolher uma cidade." }),
+    privacyPolicyAccepted: z.boolean().refine(val => val === true, { message: "Você deve aceitar a política de privacidade." }),
 }).refine(data => data.password === data.confirmPassword, {
     message: "Senhas devem ser iguais.",
     path: ["confirmPassword"]
@@ -53,6 +54,9 @@ const signupSchema = z.object({
  *                 type: string
  *               cityId:
  *                 type: integer
+ *               privacyPolicyAccepted:
+ *                 type: boolean
+ *                 description: Não aceitar a privacidade
  *     responses:
  *       201:
  *         description: Usuário criado com sucesso.

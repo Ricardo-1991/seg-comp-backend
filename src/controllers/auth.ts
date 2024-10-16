@@ -2,17 +2,24 @@ import { Request, Response, NextFunction } from 'express';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import prisma from "../../prisma/prismaClient"
-import { CustomError } from '../interfaces/customError';
+import { CustomError } from '../interfaces/customError'
+import { validatePrivacyPolicy, checkCpfExists, checkEmailExists } from '../utils/userFormValidation'
 
 export const signupController = async (request: Request, response: Response, next: NextFunction) => {
     try {
-        const { name, email, password, confirmPassword, cpf, gender, cityId } = request.body;
+        const { name, email, password, confirmPassword, cpf, gender, cityId, privacyPolicyAccepted } = request.body;
         
         if(password !== confirmPassword) {
             const error = new Error("Senhas devem ser iguais.") as CustomError
             error.status = 400
             throw error
         }
+
+        await Promise.all([
+            checkEmailExists(email),
+            checkCpfExists(cpf),
+            validatePrivacyPolicy(privacyPolicyAccepted)
+        ]);
 
         const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -23,7 +30,8 @@ export const signupController = async (request: Request, response: Response, nex
                 password: hashedPassword,
                 cpf,
                 gender,
-                cityId: Number(cityId)
+                cityId: Number(cityId),
+                privacyPolicyAccepted,
             },
             include: {
                 city: true
@@ -37,7 +45,8 @@ export const signupController = async (request: Request, response: Response, nex
                 email: createUser.email,
                 gender: createUser.gender,
                 cpf: createUser.cpf,
-                city: createUser.city 
+                city: createUser.city,
+                privacyPolicyAccepted: createUser.privacyPolicyAccepted 
             }
         });
     } catch (error) {
