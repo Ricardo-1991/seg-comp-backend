@@ -1,6 +1,6 @@
 import express from 'express'
 import {z} from "zod"
-import { signupController } from '../controllers/auth'
+import { LoginController, signupController } from '../controllers/auth'
 import { userValidator } from '../middlewares/authValidator';
 import { isValidCPF } from '../utils/validateCPF';
 
@@ -65,6 +65,34 @@ const signupSchema = z.object({
  */
 
 router.post("/signup", userValidator(signupSchema), signupController)
+
+
+/**
+ * @swagger
+ * /auth/login:
+ *   post:
+ *     summary: login de usuário
+ *     tags: [Usuários]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               email:
+ *                 type: string
+ *                 format: email
+ *               password:
+ *                 type: string
+ *                 minLength: 8
+ *     responses:
+ *       200:
+ *         description: Usuário logado com sucesso.
+ *       401:
+ *         description: Senha ou e-mail inválido.
+ */
+router.post("/login", LoginController)
 
 
 export default router
