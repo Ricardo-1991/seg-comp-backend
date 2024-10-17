@@ -4,8 +4,9 @@ import { setupSwagger } from './swagger';
 import prisma from '../prisma/prismaClient'
 import authRouter from './routes/auth'
 import citiesRouter from './routes/cities'
+import incidentsRouter from './routes/incidents'
 
-import { CustomError } from '../models/interfaces';
+import { CustomError } from './interfaces/interfaces';
 
 const app = express()
 
@@ -22,6 +23,7 @@ app.use((request, response, next) => {
 
 app.use("/auth", authRouter) 
 app.use(citiesRouter) 
+app.use(incidentsRouter)
 
 app.use((error: CustomError, request: Request , response: Response, next: NextFunction) => {
     console.log(error)

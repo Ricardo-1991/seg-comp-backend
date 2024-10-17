@@ -1,0 +1,182 @@
+[
+    {
+        "type": "Roubo",
+        "coordinates": {
+            "lat": -14.811885,
+            "lon": -39.033719
+        },
+        "address": "R. Cel. José Félix",
+        "neighborhood": "Pontal"
+    },
+    {
+        "type": "Roubo",
+        "coordinates": {
+            "lat": -14.812477,
+            "lon": -39.028843
+        },
+        "address": "R. Júlio Brito",
+        "neighborhood": "Pontal"
+    },
+    {
+        "type": "Roubo",
+        "coordinates": {
+            "lat": -14.824956,
+            "lon": -39.035237
+        },
+        "address": "R. Eixo Coletor Principal",
+        "neighborhood": "Hernani Sá"
+    },
+    {
+        "type": "Homicídio",
+        "coordinates": {
+            "lat": -14.821112,
+            "lon": -39.040146
+        },
+        "address": "Av. Lótus",
+        "neighborhood": "Nelson Costa"
+    },
+    {
+        "type": "Homicídio",
+        "coordinates": {
+            "lat": -14.821545,
+            "lon": -39.041508
+        },
+        "address": "R. da Mangueira",
+        "neighborhood": "Nelson Costa"
+    },
+    {
+        "type": "Roubo",
+        "coordinates": {
+            "lat": -14.846637,
+            "lon": -39.025460
+        },
+        "address": "R. Sol e Mar",
+        "neighborhood": "Nossa Senhora da Vitória"
+    },
+    {
+        "type": "Homicídio",
+        "coordinates": {
+            "lat": -14.851884,
+            "lon": -39.024955
+        },
+        "address": "BA-001",
+        "neighborhood": "São Francisco"
+    },
+    {
+        "type": "Homicídio",
+        "coordinates": {
+            "lat": -14.804671,
+            "lon": -39.033208
+        },
+        "address": "Av. Dois de Julho",
+        "neighborhood": "Centro"
+    },
+    {
+        "type": "Roubo",
+        "coordinates": {
+            "lat": -14.798939,
+            "lon": -39.032051
+        },
+        "address": "R. Cel. Paiva",
+        "neighborhood": "Centro"
+    },
+    {
+        "type": "Roubo",
+        "coordinates": {
+            "lat": -14.798286,
+            "lon": -39.036115
+        },
+        "address": "R. Marquês de Paranaguá",
+        "neighborhood": "Centro"
+    },
+    {
+        "type": "Homicídio",
+        "coordinates": {
+            "lat": -14.795467,
+            "lon": -39.037286
+        },
+        "address": "Av. Itabuna",
+        "neighborhood": "Conquista"
+    },
+    {
+        "type": "Homicídio",
+        "coordinates": {
+            "lat": -14.795141,
+            "lon": -39.040340
+        },
+        "address": "R. Coqueiro",
+        "neighborhood": "Conquista"
+    },
+    {
+        "type": "Roubo",
+        "coordinates": {
+            "lat": -14.793786,
+            "lon": -39.044825
+        },
+        "address": "Av. Brasil",
+        "neighborhood": "Conquista"
+    },
+    {
+        "type": "Roubo",
+        "coordinates": {
+            "lat": -14.792443,
+            "lon": -39.036267
+        },
+        "address": "R. Almiro Vinhais",
+        "neighborhood": "Cidade Nova"
+    },
+    {
+        "type": "Roubo",
+        "coordinates": {
+            "lat": -14.787651,
+            "lon": -39.032242
+        },
+        "address": "Av. Soares Lopes",
+        "neighborhood": "Centro"
+    },
+    {
+        "type": "Homicídio",
+        "coordinates": {
+            "lat": -14.788791,
+            "lon": -39.044042
+        },
+        "address": "R.A",
+        "neighborhood": "Tapera"
+    },
+    {
+        "type": "Homicídio",
+        "coordinates": {
+            "lat": -14.785707,
+            "lon": -39.044822
+        },
+        "address": "R. Clemente Mariano",
+        "neighborhood": "Malhado"
+    },
+    {
+        "type": "Homicídio",
+        "coordinates": {
+            "lat": -14.784996,
+            "lon": -39.046739
+        },
+        "address": "R. Uruguaiana",
+        "neighborhood": "Malhado"
+    },
+    {
+        "type": "Roubo",
+        "coordinates": {
+            "lat": -14.787537,
+            "lon": -39.050150
+        },
+        "address": "Av. Ubaiataba",
+        "neighborhood": "Barra do Itaípe"
+    },
+    {
+        "type": "Homicídio",
+        "coordinates": {
+            "lat": -14.798126,
+            "lon": -39.044318
+        },
+        "address": "R. Padre Anchieta",
+        "neighborhood": "Conquista"
+    }
+]
