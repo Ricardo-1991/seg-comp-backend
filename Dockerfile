@@ -1,16 +1,19 @@
-FROM ubuntu:18.04
+FROM node:latest
 
-WORKDIR /app
+WORKDIR /usr/app
+
+COPY package*.json ./
+
+RUN npm install
 
 COPY . .
 
-#RUN apt-get update
+#RUN npx prisma migrate dev --name init
 
-RUN npm install
-RUN npx prisma migrate dev --name init
 RUN npx prisma migrate deploy
-RUN npx prisma generate
+
+#RUN npm prisma generate
 
 EXPOSE 3000
 
-CMD ["npm", "run", "dev"]
+CMD ["npm", "run", "start"]

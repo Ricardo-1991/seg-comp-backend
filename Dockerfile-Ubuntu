@@ -1,0 +1,38 @@
+FROM ubuntu:22.04
+
+
+WORKDIR /app
+
+COPY . .
+
+RUN apt-get update
+RUN apt-get install -y curl
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+
+#RUN nvm install 18
+RUN bash -c "source ~/.nvm/nvm.sh && nvm install 18"
+
+#RUN nvm use 18
+RUN bash -c "source ~/.nvm/nvm.sh && nvm use 18"
+
+#RUN node -v
+RUN bash -c "source ~/.nvm/nvm.sh && node -v"
+
+#RUN npm install -g prisma
+
+#RUN npm install
+RUN bash -c "source ~/.nvm/nvm.sh && npm install"
+
+
+#RUN npx prisma migrate dev --name init
+RUN bash -c "source ~/.nvm/nvm.sh && npx prisma migrate dev --name init"
+
+#RUN npx prisma generate
+RUN bash -c "source ~/.nvm/nvm.sh && npx prisma generate"
+
+#RUN npx prisma migrate deploy
+RUN bash -c "source ~/.nvm/nvm.sh && npx prisma migrate deploy"
+
+EXPOSE 3000
+
+CMD ["npm", "run", "dev"]
